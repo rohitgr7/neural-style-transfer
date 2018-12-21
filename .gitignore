@@ -1,0 +1,6 @@
+__pycache__/
+.floydexpt
+.floydignore
+floyd.yml
+models/
+floyd_run.sh

@@ -9,7 +9,7 @@ def parser():
     parser.add_argument(
         '--model_path',
         type=str,
-        default='/models/imagenet-vgg-verydeep-19.mat',
+        default='./models/imagenet-vgg-verydeep-19.mat',
         help='Preloaded VGG19 model weights path'
     )
 
