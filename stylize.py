@@ -12,7 +12,8 @@ class Stylize:
 
         # Preprocess image
         self.C0 = self.net.preprocess_input(content_image)
-        self.S0 = np.array([self.net.preprocess_input(st_image) for st_image in style_images], dtype=np.float32)
+        self.S0 = np.array([self.net.preprocess_input(st_image)
+                            for st_image in style_images], dtype=np.float32)
         self.X0 = self.net.preprocess_input(init_gen_image)
 
         # Layers to calculate loss
@@ -71,8 +72,10 @@ class Stylize:
     def _build_graph(self):
 
         # Placeholders for content image and style_images
-        self.C = tf.placeholder(dtype=tf.float32, shape=self.C0.shape, name='content_image')
-        self.S = tf.placeholder(dtype=tf.float32, shape=self.S0.shape, name='style_images')
+        self.C = tf.placeholder(
+            dtype=tf.float32, shape=self.C0.shape, name='content_image')
+        self.S = tf.placeholder(
+            dtype=tf.float32, shape=self.S0.shape, name='style_images')
 
         # Trainable variable for generated_image
         self.X = tf.Variable(self.X0, name='generated_image')
@@ -83,7 +86,8 @@ class Stylize:
         # Losses
         self.L_content = self._get_content_loss(generated_layers)
         self.L_style = self._get_style_loss(generated_layers)
-        self.L_tv = self.tv * tf.image.total_variation(self.X, name='t_variation_loss')[0]
+        self.L_tv = self.tv * \
+            tf.image.total_variation(self.X, name='t_variation_loss')[0]
 
         self.L_total = self.L_content + self.L_style + self.L_tv
 
@@ -100,7 +104,9 @@ class Stylize:
             _, h, w, c = content_layers[layer].shape
             N, M = h.value * w.value, c.value
 
-            c_loss = weight * tf.reduce_sum(tf.pow(content_layers[layer] - generated_layers[layer], 2))
+            c_loss = weight * \
+                tf.reduce_sum(
+                    tf.pow(content_layers[layer] - generated_layers[layer], 2))
 
             # Check for the content-loss-type
             if self.content_losstype == 1:
@@ -134,7 +140,8 @@ class Stylize:
                 style_gram_mat = self._get_gram_matrix(style_layers[layer])
                 gen_gram_mat = self._get_gram_matrix(generated_layers[layer])
 
-                s_loss = weight * tf.reduce_sum(tf.pow(style_gram_mat - gen_gram_mat, 2))
+                s_loss = weight * \
+                    tf.reduce_sum(tf.pow(style_gram_mat - gen_gram_mat, 2))
                 s_loss = 1. / (4. * N**2 * M**2) * s_loss
                 style_loss += s_loss
 

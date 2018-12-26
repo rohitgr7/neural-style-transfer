@@ -31,7 +31,8 @@ class VGG:
         self.alpha = alpha
 
         # Mean values of pixels for vgg with RGB channels
-        self.mean_pixels = np.array([123.68, 116.779, 103.939], dtype=np.float32)
+        self.mean_pixels = np.array(
+            [123.68, 116.779, 103.939], dtype=np.float32)
 
     def preprocess_input(self, image):
 

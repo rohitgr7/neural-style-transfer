@@ -9,7 +9,7 @@ def parser():
     parser.add_argument(
         '--model_path',
         type=str,
-        default='./models/imagenet-vgg-verydeep-19.mat',
+        default='/models/imagenet-vgg-verydeep-19.mat',
         help='Preloaded VGG19 model weights path'
     )
 
@@ -31,7 +31,7 @@ def parser():
     parser.add_argument(
         '--content_image',
         type=str,
-        default='content2.jpg',
+        default='content1.jpg',
         help='Content image'
     )
 
@@ -39,7 +39,7 @@ def parser():
         '--style_images',
         nargs='+',
         type=str,
-        default=['style13.jpg'],
+        default=['style14.jpg'],
         help='Style images'
     )
 
@@ -175,7 +175,7 @@ def parser():
     parser.add_argument(
         '--max_size',
         type=int,
-        default=300,
+        default=512,
         help='Max of height or weight of the image to be generated'
     )
 

@@ -23,7 +23,8 @@ def main():
         print('Model created....')
 
     # Content and Style Images
-    content_image = load_image(os.path.join(args.content_path, args.content_image), max_size=args.max_size)
+    content_image = load_image(os.path.join(
+        args.content_path, args.content_image), max_size=args.max_size)
     style_images = [
         load_image(os.path.join(args.style_path, image),
                    shape=(content_image.shape[1], content_image.shape[0]))
@@ -38,7 +39,8 @@ def main():
     elif args.initial_type == 'style':
         init_gen_image = style_images[0]
     elif args.initial_type == 'random':
-        init_gen_image = get_content_image(content_image, args.noise_ratio, args.seed)
+        init_gen_image = get_content_image(
+            content_image, args.noise_ratio, args.seed)
 
     if args.verbose:
         print('Generated image initialized....')
