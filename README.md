@@ -20,9 +20,9 @@ If you want to install the packages manually, here's the
 list:
 
 * [TensorFlow](https://www.tensorflow.org/versions/master/get_started/os_setup.html#download-and-setup)
-* [NumPy](https://github.com/numpy/numpy/blob/master/INSTALL.rst.txt)
-* [SciPy](https://github.com/scipy/scipy/blob/master/INSTALL.rst.txt)
-* [Pillow](http://pillow.readthedocs.io/en/3.3.x/installation.html#installation)
+* [NumPy](http://www.numpy.org/)
+* [SciPy](https://www.scipy.org/install.html)
+* [Pillow](https://pillow.readthedocs.io/en/5.3.x/installation.html)
 
 ## Guide
 Use `python main.py --content_image <content file> --style_images <style files> --out_filepath <output file>` to stylize and image.
